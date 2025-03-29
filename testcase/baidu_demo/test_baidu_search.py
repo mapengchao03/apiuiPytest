@@ -5,7 +5,6 @@ from common.logger import logger
 from common.read_data import read_data
 from page_object.baidu_demo.baidu_search import baidu_search
 
-
 @allure.feature("计算器功能")
 class TestCalculator:
 
@@ -21,7 +20,7 @@ class TestCalculator:
         with allure.step("步骤2：执行加法操作"):
             result = a + b
         with allure.step("步骤3：验证结果"):
-            assert result == 5, "加法结果错误"
+            assert result == 5, "加法结果正确"
         allure.attach("操作日志", "成功完成加法测试", allure.attachment_type.TEXT)
 
     @allure.story("减法运算")
@@ -31,14 +30,16 @@ class TestCalculator:
         """测试减法"""
         a, b = 5, 3
         result = a - b
-        assert result == 2, "减法结果错误"
+        assert result == 3, "减法结果错误"
+        logger.critical("断言严重错误啊")
 
     @allure.feature("高级功能")
     @allure.story("乘法运算")
     def test_multiply(self):
-        with allure.step("计算乘积"):
+        with allure.step("步骤1:计算乘积"):
             assert 2 * 3 == 6
-
+        with allure.step("步骤2:日志记录"):
+            logger.info("乘法OK")
 
 @allure.feature("测试TestOne类的功能")
 class TestOne:
