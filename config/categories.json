@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Ignored Tests",
+    "matchedStatuses": ["skipped"]
+  },
+  {
+    "name": "Failed Tests",
+    "matchedStatuses": ["failed"]
+  },
+  {
+    "name": "Passed Tests",
+    "matchedStatuses": ["passed"]
+  }
+]
