@@ -2,6 +2,7 @@
 import pytest
 import allure
 from common.logger import logger
+from config import config
 from common.read_data import read_data
 from page_object.baidu_demo.baidu_search import baidu_search
 
@@ -50,7 +51,6 @@ class TestOne:
     def test_add01(self):
         a, b = 2,2
         assert 4 == a + b
-        print('add function is success')
         logger.info("这是info了")
 
     @pytest.mark.skip('无条件跳过的用例')
@@ -60,7 +60,6 @@ class TestOne:
     def test_add02(self):
         a, b = 2, 2
         assert 4 == a + b
-        print('add function is success')
         logger.info("这是skip了")
 
     @allure.story("测试加法3")
@@ -69,7 +68,6 @@ class TestOne:
     def test_add03(self):
         a, b = 2, 3
         assert 4 == a + b
-        print('add function is success')
         logger.error("这是failed了")
 
     @allure.story("测试参数化")
@@ -77,29 +75,26 @@ class TestOne:
     @allure.title("测试参数化用例标题")
     @pytest.mark.parametrize('a', [111111, 222222, 333333, 444444, 555555])
     def test_param(self, a):
-        print(a)
-        logger.info("这是info了")
+        logger.info(f"这是info了,a是{a}")
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出为字典格式数据')
     @pytest.mark.parametrize('a', read_data.read_csv_dict("data/ui/baidu_demo/baidu_search.csv"))
     def test_param01(self, a):
-        print(a)
-        logger.info("这是info了")
+        logger.info(f"这是info了,a是{a}")
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出列表格式数据')
     @pytest.mark.parametrize('a', read_data.read_csv_list("data/ui/baidu_demo/baidu_search.csv"))
     def test_param02(self, a):
-        print(a)
-        logger.info("这是info了")
+        logger.info(f"这是info了,a是{a}")
 
     @allure.story("搜索selenium结果用例")
     @allure.title("测试搜索selenium结果用例标题")
     def test_001(self):
         """搜索"""
         with allure.step("步骤1:打开百度网址"):
-            baidu_search.get_url("https://www.baidu.com/")
+            baidu_search.get_url(config.baidu_demo_host)
         with allure.step("步骤2:输入搜索条件"):
             baidu_search.input_search("selenium")
         with allure.step("步骤3:点击搜索按钮"):
@@ -116,7 +111,7 @@ class TestOne:
     def test_002(self):
         """测试搜索候选"""
         with allure.step("步骤1:打开百度网址"):
-            baidu_search.get_url("https://www.baidu.com/")
+            baidu_search.get_url(config.baidu_demo_host)
         with allure.step("步骤2:输入搜索条件"):
             baidu_search.input_search("selenium")
         with allure.step("步骤3:获取搜索候选数据"):
@@ -128,7 +123,6 @@ class TestOne:
                 assert False
         with allure.step("步骤5:日志记录"):
             logger.info("ok")
-
 
 if __name__ == '__main__':
     pass

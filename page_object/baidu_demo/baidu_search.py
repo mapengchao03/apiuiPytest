@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
-from base.basepage import WebPage, sleep
+from base.basepage import WebPage
+from common.times import sleep
 from common.util import util_data
 from common.read_data import read_data
 

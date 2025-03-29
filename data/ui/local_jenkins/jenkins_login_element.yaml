@@ -1,0 +1,3 @@
+用户名输入框: "css==#j_username"
+密码输入框: "css==#j_password"
+登录按钮: "css==.jenkins-button"

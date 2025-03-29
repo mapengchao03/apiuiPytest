@@ -52,17 +52,6 @@ class WebPage(object):
         except Exception as e:
             logger.error("关闭浏览器异常", repr(e))
 
-    def get_title(self):
-        """获取网页标题"""
-        title = ''
-        try:
-            title = self.driver.title
-            logger.info("获取网页标题为--%s" % title)
-        except Exception as e:
-            logger.error("获取网页标题异常", repr(e))
-        finally:
-            return title
-
     def find_element(self, locator):
         """寻找单个元素"""
         mode = locator[0]
@@ -164,6 +153,17 @@ class WebPage(object):
         except Exception as e:
             logger.error("获取文本：{}错误".format(elements_text), repr(e))
         return elements_text
+
+    def get_title(self):
+        """获取网页标题"""
+        title = ''
+        try:
+            title = self.driver.title
+            logger.info("获取网页标题为--%s" % title)
+        except Exception as e:
+            logger.error("获取网页标题异常", repr(e))
+        finally:
+            return title
 
     @property
     def get_source(self):

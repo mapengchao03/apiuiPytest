@@ -19,7 +19,8 @@ allure_report = os.path.join(root_path, 'allure-report')
 allure_results = os.path.join(root_path, 'allure-results')
 
 # host
-host = "https://www.baidu.com/"
+baidu_demo_host = "https://www.baidu.com/"
+local_jenkins_host = "http://localhost:8081/"
 # 邮件信息
 EMAIL_INFO = {
     'username': '1084502012@qq.com',  # 切换成你自己的地址
