@@ -60,7 +60,16 @@ class TestOne:
         a, b = 2, 2
         assert 4 == a + b
         print('add function is success')
-        logger.info("这是info了")
+        logger.info("这是skip了")
+
+    @allure.story("测试加法3")
+    @allure.title("测试加法003用例的标题")
+    @allure.description("描述用例的功能")
+    def test_add03(self):
+        a, b = 2, 3
+        assert 4 == a + b
+        print('add function is success')
+        logger.error("这是failed了")
 
     @allure.story("测试参数化")
     @allure.description("描述用例的功能")
@@ -68,21 +77,21 @@ class TestOne:
     @pytest.mark.parametrize('a', [111111, 222222, 333333, 444444, 555555])
     def test_param(self, a):
         print(a)
-        logger.warning("这是warning了")
+        logger.info("这是info了")
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出为字典格式数据')
     @pytest.mark.parametrize('a', read_data.read_csv_dict("data/ui/baidu_demo/baidu_search.csv"))
     def test_param01(self, a):
         print(a)
-        logger.critical("这是critical了")
+        logger.info("这是info了")
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出列表格式数据')
     @pytest.mark.parametrize('a', read_data.read_csv_list("data/ui/baidu_demo/baidu_search.csv"))
     def test_param02(self, a):
         print(a)
-        logger.error("这是error了")
+        logger.info("这是info了")
 
     @allure.story("搜索selenium结果用例")
     @allure.title("测试搜索selenium结果用例标题")

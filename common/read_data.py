@@ -68,11 +68,11 @@ class ReadData(object):
 read_data = ReadData()
 
 if __name__ == '__main__':
-    # 演示 示例
-    print(read_data.read_csv_dict("data/ui/baidu_search.csv"))
-    print(read_data.read_csv_list("data/ui/baidu_search.csv"))
-    print(read_data.read_json("data/ui/baidu_search.json"))
-    print(read_data.read_yaml("data/ui/baidu_search.yaml"))
+    # 演示 示例baidu_demo
+    print(read_data.read_csv_dict("data/ui/baidu_demo/baidu_search.csv"))
+    print(read_data.read_csv_list("data/ui/baidu_demo/baidu_search.csv"))
+    print(read_data.read_json("data/ui/baidu_demo/baidu_search.json"))
+    print(read_data.read_yaml("data/ui/baidu_demo/baidu_search_element.yaml"))
 
 
 
