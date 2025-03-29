@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
-import pytest, re
+import pytest
 import allure
 from common.logger import logger
 from common.read_data import read_data
-from page_object.baidu_search import baidu_search
+from page_object.baidu_demo.baidu_search import baidu_search
 
 
 @allure.feature("计算器功能")
@@ -72,14 +72,14 @@ class TestOne:
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出为字典格式数据')
-    @pytest.mark.parametrize('a', read_data.read_csv_dict("data/ui/baidu_search.csv"))
+    @pytest.mark.parametrize('a', read_data.read_csv_dict("data/ui/baidu_demo/baidu_search.csv"))
     def test_param01(self, a):
         print(a)
         logger.critical("这是critical了")
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出列表格式数据')
-    @pytest.mark.parametrize('a', read_data.read_csv_list("data/ui/baidu_search.csv"))
+    @pytest.mark.parametrize('a', read_data.read_csv_list("data/ui/baidu_demo/baidu_search.csv"))
     def test_param02(self, a):
         print(a)
         logger.error("这是error了")

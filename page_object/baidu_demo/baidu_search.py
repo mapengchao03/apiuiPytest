@@ -22,7 +22,7 @@ class BaiduSearch(WebPage):
         self.is_click(util_data.split_data(search_yaml['搜索按钮']))
 
 
-search_yaml = read_data.read_yaml("data/ui/baidu_search_element.yaml")
+search_yaml = read_data.read_yaml("data/ui/baidu_demo/baidu_search_element.yaml")
 baidu_search = BaiduSearch()
 
 if __name__ == '__main__':
