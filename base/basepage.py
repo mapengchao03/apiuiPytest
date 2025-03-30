@@ -141,7 +141,8 @@ class WebPage(object):
             logger.error("获取文本：{}成功".format(element_text))
         except Exception as e:
             logger.error("获取文本：{}错误".format(element_text), repr(e))
-        return element_text
+        finally:
+            return element_text
 
     def elements_text(self, locator, num):
         """获取当前单个元素的text"""
@@ -152,7 +153,8 @@ class WebPage(object):
             logger.error("获取文本：{}成功".format(elements_text))
         except Exception as e:
             logger.error("获取文本：{}错误".format(elements_text), repr(e))
-        return elements_text
+        finally:
+            return elements_text
 
     def get_title(self):
         """获取网页标题"""

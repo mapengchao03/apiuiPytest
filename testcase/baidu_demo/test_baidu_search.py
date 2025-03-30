@@ -21,7 +21,15 @@ class TestCalculator:
         with allure.step("步骤2：执行加法操作"):
             result = a + b
         with allure.step("步骤3：验证结果"):
-            assert result == 5, "加法结果正确"
+            try:
+                assert result == 5
+            except Exception as e:
+                # 第一logger.error是为了记录日志，
+                # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+                logger.error(f"校验失败，错误信息:{repr(e)}")
+                raise e
+            else:
+                logger.info("校验成功")
         allure.attach("操作日志", "成功完成加法测试", allure.attachment_type.TEXT)
 
     @allure.story("减法运算")
@@ -31,16 +39,29 @@ class TestCalculator:
         """测试减法"""
         a, b = 5, 3
         result = a - b
-        assert result == 3, "减法结果错误"
-        logger.critical("断言严重错误啊")
+        try:
+            assert result == 3
+        except Exception as e:
+            # 第一logger.error是为了记录日志，
+            # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+            logger.error(f"校验失败，错误信息:{repr(e)}")
+            raise e
+        else:
+            logger.info("校验成功")
 
     @allure.feature("高级功能")
     @allure.story("乘法运算")
     def test_multiply(self):
         with allure.step("步骤1:计算乘积"):
-            assert 2 * 3 == 6
-        with allure.step("步骤2:日志记录"):
-            logger.info("乘法OK")
+            try:
+                assert 2 * 3 == 6
+            except Exception as e:
+                # 第一logger.error是为了记录日志，
+                # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+                logger.error(f"校验失败，错误信息:{repr(e)}")
+                raise e
+            else:
+                logger.info("校验成功")
 
 @allure.feature("测试TestOne类的功能")
 class TestOne:
@@ -50,8 +71,14 @@ class TestOne:
     @allure.description("描述用例的功能")
     def test_add01(self):
         a, b = 2,2
-        assert 4 == a + b
-        logger.info("这是info了")
+        try:
+            assert 4 == a + b
+        except Exception as e:
+            # 第一logger.error是为了记录日志，第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+            logger.error(f"校验失败，错误信息:{repr(e)}")
+            raise e
+        else:
+            logger.info("校验成功")
 
     @pytest.mark.skip('无条件跳过的用例')
     @allure.story("测试加法2")
@@ -59,35 +86,73 @@ class TestOne:
     @allure.description("描述用例的功能")
     def test_add02(self):
         a, b = 2, 2
-        assert 4 == a + b
-        logger.info("这是skip了")
+        try:
+            assert 4 == a + b
+        except Exception as e:
+            # 第一logger.error是为了记录日志，
+            # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+            logger.error(f"校验失败，错误信息:{repr(e)}")
+            raise e
+        else:
+            logger.info("校验成功")
 
     @allure.story("测试加法3")
     @allure.title("测试加法003用例的标题")
     @allure.description("描述用例的功能")
     def test_add03(self):
         a, b = 2, 3
-        assert 4 == a + b
-        logger.error("这是failed了")
+        try:
+            assert 4 == a + b
+        except Exception as e:
+            # 第一logger.error是为了记录日志，
+            # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+            logger.error(f"校验失败，错误信息:{repr(e)}")
+            raise e
+        else:
+            logger.info("校验成功")
 
     @allure.story("测试参数化")
     @allure.description("描述用例的功能")
     @allure.title("测试参数化用例标题")
     @pytest.mark.parametrize('a', [111111, 222222, 333333, 444444, 555555])
     def test_param(self, a):
-        logger.info(f"这是info了,a是{a}")
+        try:
+            assert a
+        except Exception as e:
+            # 第一logger.error是为了记录日志，
+            # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+            logger.error(f"校验失败，错误信息:{repr(e)}")
+            raise e
+        else:
+            logger.info("校验成功")
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出为字典格式数据')
     @pytest.mark.parametrize('a', read_data.read_csv_dict("data/ui/baidu_demo/baidu_search.csv"))
     def test_param01(self, a):
-        logger.info(f"这是info了,a是{a}")
+        try:
+            assert a
+        except Exception as e:
+            # 第一logger.error是为了记录日志，
+            # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+            logger.error(f"校验失败，错误信息:{repr(e)}")
+            raise e
+        else:
+            logger.info("校验成功")
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出列表格式数据')
     @pytest.mark.parametrize('a', read_data.read_csv_list("data/ui/baidu_demo/baidu_search.csv"))
     def test_param02(self, a):
-        logger.info(f"这是info了,a是{a}")
+        try:
+            assert a
+        except Exception as e:
+            # 第一logger.error是为了记录日志，
+            # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+            logger.error(f"校验失败，错误信息:{repr(e)}")
+            raise e
+        else:
+            logger.info("校验成功")
 
     @allure.story("搜索selenium结果用例")
     @allure.title("测试搜索selenium结果用例标题")
@@ -100,11 +165,17 @@ class TestOne:
         with allure.step("步骤3:点击搜索按钮"):
             baidu_search.click_search()
         with allure.step("步骤4:查询数据"):
-            result = baidu_search.get_source
+            result = baidu_search.get_title()
         with allure.step("步骤5:校验结果"):
-            assert result
-        with allure.step("步骤6:日志记录"):
-            logger.info("OK")
+            try:
+                assert result
+            except Exception as e:
+                # 第一logger.error是为了记录日志，
+                # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+                logger.error(f"校验失败，错误信息:{repr(e)}")
+                raise e
+            else:
+                logger.info("校验成功")
 
     @allure.story("测试搜索候选项用例")
     @allure.title("测试搜索候选用例标题")
@@ -117,12 +188,16 @@ class TestOne:
         with allure.step("步骤3:获取搜索候选数据"):
             result = baidu_search.imagine
         with allure.step("步骤4:校验结果"):
-            if "selenium" in result[0]:
-                assert True
+            try:
+                assert "selenium" in result[0]
+            except Exception as e:
+                # 第一logger.error是为了记录日志，
+                # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+                logger.error(f"校验失败，错误信息:{repr(e)}")
+                raise e
             else:
-                assert False
-        with allure.step("步骤5:日志记录"):
-            logger.info("ok")
+                logger.info("校验成功")
+
 
 if __name__ == '__main__':
     pass

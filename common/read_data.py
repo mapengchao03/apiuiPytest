@@ -16,7 +16,7 @@ class ReadData(object):
                 for row in reader:
                     data.append(row)
         except Exception as e:
-            print("读取csv文件错误" + repr(e))
+            print(f"文件{csv_file},读取csv文件错误信息：{repr(e)}")
         finally:
             return data
 
@@ -32,7 +32,7 @@ class ReadData(object):
                 for row in reader:
                     data.append(row)
         except Exception as e:
-            print("读取csv文件错误" + repr(e))
+            print(f"文件{csv_file},读取csv文件错误信息：{repr(e)}")
         finally:
             return data
 
@@ -46,7 +46,7 @@ class ReadData(object):
             with open(json_file, 'r', encoding='utf-8') as file:
                 data = json.load(file)
         except Exception as e:
-            print("读取json文件错误" + repr(e))
+            print(f"文件{json_file},读取json文件错误信息：{repr(e)}")
         finally:
             return data
 
@@ -60,7 +60,7 @@ class ReadData(object):
             with open(yaml_file, 'r', encoding='utf-8') as file:
                 data = yaml.safe_load(file)
         except Exception as e:
-            print("读取yaml文件错误" + repr(e))
+            print(f"文件{yaml_file},读取yaml文件错误信息：{repr(e)}")
         finally:
             return data
 

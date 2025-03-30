@@ -23,6 +23,12 @@ class TestJenkinsLogin:
             jenkins_login.click_login()
         with allure.step("步骤5:校验结果"):
             result = jenkins_login.get_title()
-            assert result == "工作台 [Jenkins]"
-        with allure.step("步骤6:日志记录"):
-            logger.info("OK")
+            try:
+                assert result == "工作台 [Jenkins]"
+            except Exception as e:
+                # 第一logger.error是为了记录日志，
+                # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+                logger.error(f"校验失败，错误信息:{repr(e)}")
+                raise e
+            else:
+                logger.info("校验成功")
