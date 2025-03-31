@@ -3,10 +3,7 @@
 selenium基类
 本文件存放了selenium基类的封装方法
 """
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import TimeoutException
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from common.logger import logger
@@ -44,13 +41,29 @@ class WebPage(object):
         except Exception as e:
             logger.error("打开网页%s错误" % url, repr(e))
 
+    def close_browser(self):
+        """关闭浏览器"""
+        try:
+            self.driver.close()
+            logger.info("已关闭当前活动窗口浏览器")
+        except Exception as e:
+            logger.error("关闭当前活动窗口浏览器异常", repr(e))
+
     def quit_browser(self):
         """关闭浏览器"""
         try:
             self.driver.quit()
-            logger.info("已关闭浏览器")
+            logger.info("已关闭当前实例浏览器")
         except Exception as e:
-            logger.error("关闭浏览器异常", repr(e))
+            logger.error("关闭当前实例浏览器异常", repr(e))
+
+    def del_all_cookies(self):
+        """关闭浏览器"""
+        try:
+            self.driver.delete_all_cookies()
+            logger.info("已删除当前实例浏览器的所有cookies")
+        except Exception as e:
+            logger.error("删除当前实例浏览的所有cookies器异常", repr(e))
 
     def find_element(self, locator):
         """寻找单个元素"""

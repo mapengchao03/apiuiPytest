@@ -1,8 +1,14 @@
-# 前置和后置操作，只执行一次
-# @pytest.fixture(scope="session", autouse=True)
-# def open_browser():
-#     web_page.get_url(conf_manager.host)
-#     log.info("前置操作打开浏览器")
+# import pytest
+# from base.basepage import WebPage
+# @pytest.fixture(scope="session")
+# def browser():
+#     driver = WebPage()
+#     yield driver
+#     driver.quit_browser()
+#
+# @pytest.fixture(autouse=True)
+# def cleanup(browser):
 #     yield
-#     web_page.quit_browser()
-#     log.info("后置操作关闭浏览器")
+#     # 清理cookies并返回空白页
+#     browser.del_all_cookies()
+#     browser.get_url("about:blank")

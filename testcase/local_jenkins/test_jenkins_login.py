@@ -1,9 +1,7 @@
 # -*- coding:utf-8 -*-
-import pytest
 import allure
 from common.logger import logger
 from config import config
-from common.read_data import read_data
 from page_object.local_jenkins.jenkins_login import jenkins_login
 
 @allure.feature("jenkins登录功能")
