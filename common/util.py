@@ -5,12 +5,12 @@ class Util(object):
 
     # 判断当前环境为windows或者linux
     @staticmethod
-    def get_root_path():
+    def get_current_system():
         if platform.system() == "Windows":
-            root_path = "D:\\home\\firefly\\extend"
+            current_system = "windows"
         else:
-            root_path = "/Library/code/"
-        return root_path
+            current_system = "linux/unix/mac"
+        return current_system
 
     # 根据"=="拆分
     @staticmethod
@@ -19,11 +19,12 @@ class Util(object):
         return name, value
 
 
-util_data = Util()
+util = Util()
 
 if __name__ == '__main__':
     # 演示 示例
-    print(util_data.split_data("id==kw"))
+    print(util.split_data("id==kw"))
+    print(util.get_current_system())
 
 
 
