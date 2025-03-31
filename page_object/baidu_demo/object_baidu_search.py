@@ -9,7 +9,7 @@ class BaiduSearch(WebPage):
 
     """搜索类"""
     def input_search(self, content):
-        """输入搜索"""
+        """搜索框输入内容"""
         self.is_send_keys(util_data.split_data(search_yaml['搜索框']), txt=content)
         sleep()
 
@@ -23,7 +23,7 @@ class BaiduSearch(WebPage):
         self.is_click(util_data.split_data(search_yaml['搜索按钮']))
 
 
-search_yaml = read_data.read_yaml("data/ui/baidu_demo/baidu_search_element.yaml")
+search_yaml = read_data.read_yaml("data/ui/baidu_demo/object_baidu_search.yaml")
 baidu_search = BaiduSearch()
 
 if __name__ == '__main__':

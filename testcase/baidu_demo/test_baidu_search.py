@@ -4,7 +4,7 @@ import allure
 from common.logger import logger
 from config import config
 from common.read_data import read_data
-from page_object.baidu_demo.baidu_search import baidu_search
+from page_object.baidu_demo.object_baidu_search import baidu_search
 
 @allure.feature("计算器功能")
 class TestCalculator:
@@ -128,7 +128,7 @@ class TestOne:
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出为字典格式数据')
-    @pytest.mark.parametrize('a', read_data.read_csv_dict("data/ui/baidu_demo/baidu_search.csv"))
+    @pytest.mark.parametrize('a', read_data.read_csv_dict("data/ui/baidu_demo/test_baidu_search.csv"))
     def test_param01(self, a):
         try:
             assert a
@@ -142,7 +142,7 @@ class TestOne:
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出列表格式数据')
-    @pytest.mark.parametrize('a', read_data.read_csv_list("data/ui/baidu_demo/baidu_search.csv"))
+    @pytest.mark.parametrize('a', read_data.read_csv_list("data/ui/baidu_demo/test_baidu_search.csv"))
     def test_param02(self, a):
         try:
             assert a
@@ -160,7 +160,7 @@ class TestOne:
         """搜索"""
         with allure.step("步骤1:打开百度网址"):
             baidu_search.get_url(config.baidu_demo_host)
-        with allure.step("步骤2:输入搜索条件"):
+        with allure.step("步骤2:输入搜索内容"):
             baidu_search.input_search("selenium")
         with allure.step("步骤3:点击搜索按钮"):
             baidu_search.click_search()
@@ -183,7 +183,7 @@ class TestOne:
         """测试搜索候选"""
         with allure.step("步骤1:打开百度网址"):
             baidu_search.get_url(config.baidu_demo_host)
-        with allure.step("步骤2:输入搜索条件"):
+        with allure.step("步骤2:输入搜索内容"):
             baidu_search.input_search("selenium")
         with allure.step("步骤3:获取搜索候选数据"):
             result = baidu_search.imagine

@@ -19,5 +19,5 @@ class JenkinsLogin(WebPage):
         self.is_click(util_data.split_data(login_yaml['登录按钮']))
         sleep()
 
-login_yaml = read_data.read_yaml("data/ui/local_jenkins/jenkins_login_element.yaml")
+login_yaml = read_data.read_yaml("data/ui/local_jenkins/object_jenkins_login.yaml")
 jenkins_login = JenkinsLogin()
