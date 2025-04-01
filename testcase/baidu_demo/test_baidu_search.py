@@ -128,7 +128,7 @@ class TestOne:
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出为字典格式数据')
-    @pytest.mark.parametrize('a', read_data.read_csv_dict("data/ui/baidu_demo/test_baidu_search.csv"))
+    @pytest.mark.parametrize('a', read_data.read_csv_dict("data/ui/baidu_demo/test_csv.csv"))
     def test_param01(self, a):
         try:
             assert a
@@ -142,7 +142,7 @@ class TestOne:
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出列表格式数据')
-    @pytest.mark.parametrize('a', read_data.read_csv_list("data/ui/baidu_demo/test_baidu_search.csv"))
+    @pytest.mark.parametrize('a', read_data.read_csv_list("data/ui/baidu_demo/test_csv.csv"))
     def test_param02(self, a):
         try:
             assert a
@@ -158,17 +158,20 @@ class TestOne:
     @allure.title("测试搜索selenium结果用例标题")
     def test_001(self):
         """搜索"""
+        data = read_data.read_json("data/ui/baidu_demo/test_baidu_search.json")
+        search_txt = data["test_001"]["搜索内容"]
+        assert_title_txt = data["test_001"]["校验标题内容"]
         with allure.step("步骤1:打开百度网址"):
             baidu_search.get_url(config.baidu_demo_host)
         with allure.step("步骤2:输入搜索内容"):
-            baidu_search.input_search("selenium")
+            baidu_search.input_search(search_txt)
         with allure.step("步骤3:点击搜索按钮"):
             baidu_search.click_search()
         with allure.step("步骤4:查询数据"):
             result = baidu_search.get_title()
         with allure.step("步骤5:校验结果"):
             try:
-                assert result
+                assert assert_title_txt == result
             except Exception as e:
                 # 第一logger.error是为了记录日志，
                 # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
@@ -181,15 +184,18 @@ class TestOne:
     @allure.title("测试搜索候选用例标题")
     def test_002(self):
         """测试搜索候选"""
+        data = read_data.read_json("data/ui/baidu_demo/test_baidu_search.json")
+        search_txt = data["test_002"]["搜索内容"]
+        assert_imagine_txt = data["test_002"]["校验搜索候选内容"]
         with allure.step("步骤1:打开百度网址"):
             baidu_search.get_url(config.baidu_demo_host)
         with allure.step("步骤2:输入搜索内容"):
-            baidu_search.input_search("selenium")
+            baidu_search.input_search(search_txt)
         with allure.step("步骤3:获取搜索候选数据"):
             result = baidu_search.imagine
         with allure.step("步骤4:校验结果"):
             try:
-                assert "selenium" in result[0]
+                assert assert_imagine_txt in result[0]
             except Exception as e:
                 # 第一logger.error是为了记录日志，
                 # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
