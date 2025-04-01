@@ -1,11 +1,6 @@
 # -*- coding:utf-8 -*-
-"""
-selenium基类
-本文件存放了selenium基类的封装方法
-"""
+#本文件存放了selenium基类的封装方法
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium import webdriver
 from common.logger import logger
 from common.times import sleep
 
@@ -13,12 +8,9 @@ from common.times import sleep
 class WebPage(object):
 
     """selenium基类"""
-    def __init__(self):
-        self.service = webdriver.ChromeService(ChromeDriverManager().install())
-        self.driver = webdriver.Chrome(service=self.service)
-        self.driver.maximize_window()
-        self.driver.set_page_load_timeout(60) # 设置页面加载超时时间
-        self.driver.implicitly_wait(10) # 隐式等待时间
+    def __init__(self, driver):
+        self.driver = driver
+
 
     @staticmethod
     def locator_mode(mode):

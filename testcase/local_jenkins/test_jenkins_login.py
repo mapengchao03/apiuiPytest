@@ -3,15 +3,16 @@ import allure
 from common.logger import logger
 from config import config
 from common.read_data import read_data
-from page_object.local_jenkins.object_jenkins_login import jenkins_login
+from page_object.local_jenkins.object_jenkins_login import JenkinsLogin
 
 @allure.feature("jenkins登录功能")
 class TestJenkinsLogin:
 
     @allure.story("登录")
     @allure.title("jenkins登录正确用例")
-    def test_001(self):
+    def test_001(self, driver):
         """登录本地jenkins成功"""
+        jenkins_login = JenkinsLogin(driver)
         data = read_data.read_json("data/ui/local_jenkins/test_jenkins_login.json")
         username = data["test_001"]["用户名"]
         password = data["test_001"]["密码"]

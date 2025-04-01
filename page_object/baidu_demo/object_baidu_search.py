@@ -8,8 +8,8 @@ from common.read_data import read_data
 class BaiduSearch(WebPage):
 
     """搜索类"""
-    def __init__(self):
-        super().__init__()
+    def __init__(self,driver):
+        super().__init__(driver)
         self.search_yaml = read_data.read_yaml("data/ui/baidu_demo/object_baidu_search.yaml")
 
     def input_search(self, content):
@@ -26,7 +26,3 @@ class BaiduSearch(WebPage):
         """点击搜索"""
         self.is_click(util.split_data(self.search_yaml['搜索按钮']))
 
-baidu_search = BaiduSearch()
-
-if __name__ == '__main__':
-    print(util.split_data(baidu_search.search_yaml['搜索框']))

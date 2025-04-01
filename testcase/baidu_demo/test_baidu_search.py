@@ -4,7 +4,7 @@ import allure
 from common.logger import logger
 from config import config
 from common.read_data import read_data
-from page_object.baidu_demo.object_baidu_search import baidu_search
+from page_object.baidu_demo.object_baidu_search import BaiduSearch
 
 @allure.feature("计算器功能")
 class TestCalculator:
@@ -156,8 +156,9 @@ class TestOne:
 
     @allure.story("搜索selenium结果用例")
     @allure.title("测试搜索selenium结果用例标题")
-    def test_001(self):
+    def test_001(self, driver):
         """搜索"""
+        baidu_search = BaiduSearch(driver)
         data = read_data.read_json("data/ui/baidu_demo/test_baidu_search.json")
         search_txt = data["test_001"]["搜索内容"]
         assert_title_txt = data["test_001"]["校验标题内容"]
@@ -182,8 +183,9 @@ class TestOne:
 
     @allure.story("测试搜索候选项用例")
     @allure.title("测试搜索候选用例标题")
-    def test_002(self):
+    def test_002(self, driver):
         """测试搜索候选"""
+        baidu_search = BaiduSearch(driver)
         data = read_data.read_json("data/ui/baidu_demo/test_baidu_search.json")
         search_txt = data["test_002"]["搜索内容"]
         assert_imagine_txt = data["test_002"]["校验搜索候选内容"]

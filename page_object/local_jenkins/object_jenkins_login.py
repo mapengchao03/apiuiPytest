@@ -6,8 +6,8 @@ from common.read_data import read_data
 
 class JenkinsLogin(WebPage):
 
-    def __init__(self):
-         super().__init__()
+    def __init__(self,driver):
+         super().__init__(driver)
          self.login_yaml = read_data.read_yaml("data/ui/local_jenkins/object_jenkins_login.yaml")
 
     def input_username(self, content):
@@ -22,5 +22,3 @@ class JenkinsLogin(WebPage):
         """点击搜索"""
         self.is_click(util.split_data(self.login_yaml['登录按钮']))
         sleep()
-
-jenkins_login = JenkinsLogin()
