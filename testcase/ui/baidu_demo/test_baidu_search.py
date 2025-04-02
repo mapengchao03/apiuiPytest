@@ -7,7 +7,64 @@ from common.read_data import read_data
 from page_object.baidu_demo.object_baidu_search import BaiduSearch
 
 @allure.feature("计算器功能")
-class TestCalculator:
+# class TestCalculator:
+#
+#     @allure.story("加法运算")
+#     @allure.title("验证两个数相加的结果")
+#     @allure.severity(allure.severity_level.CRITICAL)
+#     @allure.description("测试加法描述")
+#     @allure.link("https://example.com/calculator", name="测试需求文档，请点击")
+#     def test_add(self):
+#         """测试加法"""
+#         with allure.step("步骤1：输入两个数字"):
+#             a, b = 2, 3
+#         with allure.step("步骤2：执行加法操作"):
+#             result = a + b
+#         with allure.step("步骤3：验证结果"):
+#             try:
+#                 assert result == 5
+#             except Exception as e:
+#                 # 第一logger.error是为了记录日志，
+#                 # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+#                 logger.error(f"校验失败，错误信息:{repr(e)}")
+#                 raise e
+#             else:
+#                 logger.info("校验成功")
+#         allure.attach("操作日志", "成功完成加法测试", allure.attachment_type.TEXT)
+#
+#     @allure.story("减法运算")
+#     @allure.title("验证两个数相减的结果")
+#     @allure.description("这是一个详细的测试描述，可以包含HTML内容<br><b>例如加粗文本</b>")
+#     def test_subtract(self):
+#         """测试减法"""
+#         a, b = 5, 3
+#         result = a - b
+#         try:
+#             assert result == 3
+#         except Exception as e:
+#             # 第一logger.error是为了记录日志，
+#             # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+#             logger.error(f"校验失败，错误信息:{repr(e)}")
+#             raise e
+#         else:
+#             logger.info("校验成功")
+#
+#     @allure.feature("高级功能")
+#     @allure.story("乘法运算")
+#     def test_multiply(self):
+#         with allure.step("步骤1:计算乘积"):
+#             try:
+#                 assert 2 * 3 == 6
+#             except Exception as e:
+#                 # 第一logger.error是为了记录日志，
+#                 # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
+#                 logger.error(f"校验失败，错误信息:{repr(e)}")
+#                 raise e
+#             else:
+#                 logger.info("校验成功")
+
+@allure.feature("测试TestOne类的功能")
+class TestOne:
 
     @allure.story("加法运算")
     @allure.title("验证两个数相加的结果")
@@ -62,9 +119,6 @@ class TestCalculator:
                 raise e
             else:
                 logger.info("校验成功")
-
-@allure.feature("测试TestOne类的功能")
-class TestOne:
 
     @allure.story("测试加法1")
     @allure.title("测试加法001用例标题")
