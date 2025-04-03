@@ -1,0 +1,22 @@
+# 注释：登录模块测试数据
+- name: "登录成功-管理员账号"  # 字符串（含空格需加引号）
+  username: admin
+  password: "123456"  # 引号可加可不加
+  params:
+    timeout: 10  # 自动识别为整数
+    remember_me: true  # 布尔值
+  assertion:
+    type: "url"
+    value: "/dashboard"
+    element:  # 嵌套字典
+      locator: "css=.welcome-text"
+      expected_text: "Welcome, Admin!"
+
+- name: "登录失败-空密码"
+  username: "test_user"
+  password: ""  # 空字符串
+  assertion:
+    type: "text"
+    value: "密码不能为空"
+    element:
+      locator: "xpath=//div[@class='error']"

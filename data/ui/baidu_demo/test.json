@@ -1,0 +1,14 @@
+[
+  {
+    "case_name": "登录成功",
+    "username": "admin",
+    "password": "123456",
+    "expected": {"type": "url", "value": "/dashboard"}
+  },
+  {
+    "case_name": "登录失败-空密码",
+    "username": "test_user",
+    "password": "",
+    "expected": {"type": "text", "value": "密码不能为空"}
+  }
+]

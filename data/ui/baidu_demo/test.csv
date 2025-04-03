@@ -1,0 +1,4 @@
+case_name,username,password,expected_type,expected_value
+登录成功,admin,123456,url,/dashboard
+登录失败-空密码,test_user,,text,密码不能为空
+登录失败-空账号,,123456,text,账号不能为空

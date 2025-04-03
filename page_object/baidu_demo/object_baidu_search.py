@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from base.basepage import WebPage
+from common.times import sleep
 
 
 class BaiduSearch(WebPage):
@@ -16,10 +17,12 @@ class BaiduSearch(WebPage):
     def input_search(self, content):
         """搜索框输入内容"""
         self.is_send_keys(self.search_input, txt=content)
+        sleep()
 
     def click_search(self):
         """点击搜索"""
         self.is_click(self.search_button)
+        sleep()
 
     @property
     def imagine(self):

@@ -1,5 +1,17 @@
-{
-"test_001" : {"搜索内容": "selenium", "校验标题内容": "selenium_百度搜索"},
-"test_002" : {"搜索内容": "selenium", "校验搜索候选内容": "selenium"},
-"test_003" : {"搜索内容": "selenium", "校验标题内容": "啦啦啦"}
-}
+[
+ {
+   "search_input": "selenium",
+   "expected_type": "selenium",
+   "expected_value": "selenium_百度搜索"
+ },
+ {
+   "search_input": "test",
+   "expected_type": "test",
+   "expected_value": "test_百度搜索"
+ },
+ {
+   "search_input": "太妙了",
+   "expected_type": "text",
+   "expected_value": "太妙了_百度搜索"
+ }
+]
