@@ -166,20 +166,6 @@ class TestOne:
         else:
             logger.info("校验成功")
 
-    @allure.story("测试参数化")
-    @allure.title('测试读取yaml并输出数据')
-    @pytest.mark.parametrize('a', read_data.read_yaml_list("data/ui/baidu_demo/object_baidu_search.yaml"))
-    def test_param04(self, a):
-        try:
-            assert a
-        except Exception as e:
-            # 第一logger.error是为了记录日志，
-            # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
-            logger.error(f"校验失败，错误信息:{repr(e)}")
-            raise e
-        else:
-            logger.info("校验成功")
-
     @allure.story("搜索selenium结果用例")
     @allure.title("测试搜索selenium结果用例标题")
     def test_001(self, driver):

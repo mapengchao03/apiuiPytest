@@ -1,24 +1,27 @@
 # -*- coding:utf-8 -*-
 from base.basepage import WebPage
 from common.times import sleep
-from common.util import util
-from common.read_data import read_data
 
 class JenkinsLogin(WebPage):
 
+    # 元素定位器
+    username_input = ("css", "#j_username")
+    password_input = ("css", "#j_password")
+    login_button = ("css", ".jenkins-button")
+
+
     def __init__(self,driver):
          super().__init__(driver)
-         self.login_yaml = read_data.read_yaml("data/ui/local_jenkins/object_jenkins_login.yaml")
 
     def input_username(self, content):
-        self.is_send_keys(util.split_data(self.login_yaml['用户名输入框']), txt=content)
+        self.is_send_keys(self.username_input, txt=content)
         sleep()
 
     def input_password(self, content):
-        self.is_send_keys(util.split_data(self.login_yaml['密码输入框']), txt=content)
+        self.is_send_keys(self.password_input, txt=content)
         sleep()
 
     def click_login(self):
         """点击搜索"""
-        self.is_click(util.split_data(self.login_yaml['登录按钮']))
+        self.is_click(self.login_button)
         sleep()

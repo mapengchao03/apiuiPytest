@@ -12,18 +12,10 @@ class Util(object):
             current_system = "linux/unix/mac"
         return current_system
 
-    # 根据"=="拆分
-    @staticmethod
-    def split_data(str_data):
-        name, value = str_data.split("==")
-        return name, value
-
-
 util = Util()
 
 if __name__ == '__main__':
     # 演示 示例
-    print(util.split_data("id==kw"))
     print(util.get_current_system())
 
 

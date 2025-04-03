@@ -102,8 +102,6 @@ if __name__ == '__main__':
     print(read_data.read_csv_list("data/ui/baidu_demo/test_csv.csv"))
     print(read_data.read_json_list("data/ui/baidu_demo/test_json.json"))
     print(type(read_data.read_json_list("data/ui/baidu_demo/test_json.json")))
-    print(read_data.read_yaml_list("data/ui/baidu_demo/object_baidu_search.yaml"))
-    print(type(read_data.read_yaml_list("data/ui/baidu_demo/object_baidu_search.yaml")))
 
 
 
