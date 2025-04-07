@@ -126,10 +126,12 @@ class TestOne:
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出为字典列表格式数据')
-    @pytest.mark.parametrize('a', read_data.read_csv("data/ui/baidu_demo/test.csv"))
-    def test_param01(self, a):
+    @pytest.mark.parametrize('data', read_data.read_csv("data/ui/baidu_demo/test.csv"))
+    def test_param01(self, data):
+        if 'error' in data:
+            pytest.fail(f"数据加载失败: {data['error']}")
         try:
-            assert a
+            assert data
         except Exception as e:
             # 第一logger.error是为了记录日志，
             # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
@@ -140,10 +142,12 @@ class TestOne:
 
     @allure.story("测试参数化")
     @allure.title('测试读取yaml并输出列表格式数据')
-    @pytest.mark.parametrize('a', read_data.read_yaml("data/ui/baidu_demo/test.yaml"))
-    def test_param02(self, a):
+    @pytest.mark.parametrize('data', read_data.read_yaml("data/ui/baidu_demo/test.yaml"))
+    def test_param02(self, data):
+        if 'error' in data:
+            pytest.fail(f"数据加载失败: {data['error']}")
         try:
-            assert a
+            assert data
         except Exception as e:
             # 第一logger.error是为了记录日志，
             # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
@@ -154,10 +158,12 @@ class TestOne:
 
     @allure.story("测试参数化")
     @allure.title('测试读取json并输出数据')
-    @pytest.mark.parametrize('a', read_data.read_json("data/ui/baidu_demo/test.json"))
-    def test_param03(self, a):
+    @pytest.mark.parametrize('data', read_data.read_json("data/ui/baidu_demo/test.json"))
+    def test_param03(self, data):
+        if 'error' in data:
+            pytest.fail(f"数据加载失败: {data['error']}")
         try:
-            assert a
+            assert data
         except Exception as e:
             # 第一logger.error是为了记录日志，
             # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
@@ -170,7 +176,8 @@ class TestOne:
     @allure.title("测试搜索selenium结果用例标题")
     @pytest.mark.parametrize('data', read_data.read_json("data/ui/baidu_demo/test_baidu_search.json"))
     def test_001(self, driver, data):
-        """搜索"""
+        if 'error' in data:
+            pytest.fail(f"数据加载失败: {data['error']}")
         baidu_search = BaiduSearch(driver)
         base_url = config.baidu_demo_host
         search_input = data["search_input"]

@@ -13,6 +13,8 @@ class TestJenkinsLogin:
     @allure.title("jenkins登录正确用例")
     @pytest.mark.parametrize('data', read_data.read_json("data/ui/local_jenkins/test_jenkins_login.json"))
     def test_001(self, driver, data):
+        if 'error' in data:
+            pytest.fail(f"数据加载失败: {data['error']}")
         """登录本地jenkins成功"""
         jenkins_login = JenkinsLogin(driver)
         base_url = config.local_jenkins_host

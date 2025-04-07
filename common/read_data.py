@@ -1,4 +1,4 @@
-import os, json, csv, yaml, pytest
+import os, json, csv, yaml
 from config import config
 from common.logger import logger
 
@@ -15,15 +15,14 @@ class ReadData(object):
                 reader = csv.DictReader(file)
                 data = list(reader)
             if not data:
+                data = [{'error': f"文件{csv_file},没有读取到数据"}]
                 logger.error(f"文件{csv_file},没有读取到数据")
-                pytest.fail(f"文件{csv_file},没有读取到数据")
-
         except FileNotFoundError:
+            data = [{'error': f"文件{csv_file} 不存在"}]
             logger.error(f"文件{csv_file} 不存在")
-            pytest.fail(f"文件{csv_file} 不存在")
         except Exception as e:
-            logger.error(f"文件{csv_file},读取csv文件错误信息：{repr(e)}")
-            pytest.fail(f"文件{csv_file},读取csv文件错误信息：{repr(e)}")
+            data = [{'error': f"文件{csv_file},读取csv文件错误信息{str(e)}"}]
+            logger.error(f"文件{csv_file},读取csv文件错误信息{str(e)}")
         finally:
             return data
 
@@ -37,14 +36,14 @@ class ReadData(object):
             with open(json_file, 'r', encoding='utf-8') as file:
                 data = json.load(file)
             if not data:
+                data = [{'error': f"文件{json_file},没有读取到数据"}]
                 logger.error(f"文件{json_file},没有读取到数据")
-                pytest.fail(f"文件{json_file},没有读取到数据")
         except FileNotFoundError:
+            data = [{'error': f"文件{json_file} 不存在"}]
             logger.error(f"文件{json_file} 不存在")
-            pytest.fail(f"文件{json_file} 不存在")
         except Exception as e:
-            logger.error(f"文件{json_file},读取json文件错误信息：{repr(e)}")
-            pytest.fail(f"文件{json_file},读取json文件错误信息：{repr(e)}")
+            data = [{'error': f"文件{json_file},读取json文件错误信息{str(e)}"}]
+            logger.error(f"文件{json_file},读取json文件错误信息{str(e)}")
         finally:
             return data
 
@@ -58,14 +57,14 @@ class ReadData(object):
             with open(yaml_file, 'r', encoding='utf-8') as file:
                 data = yaml.safe_load(file)
             if not data:
+                data = [{'error': f"文件{yaml_file},没有读取到数据"}]
                 logger.error(f"文件{yaml_file},没有读取到数据")
-                pytest.fail(f"文件{yaml_file},没有读取到数据")
         except FileNotFoundError:
+            data = [{'error': f"文件{yaml_file} 不存在"}]
             logger.error(f"文件{yaml_file} 不存在")
-            pytest.fail(f"文件{yaml_file} 不存在")
         except Exception as e:
-            logger.error(f"文件{yaml_file},读取yaml文件错误信息：{repr(e)}")
-            pytest.fail(f"文件{yaml_file},读取yaml文件错误信息：{repr(e)}")
+            data = [{'error': f"文件{yaml_file},读取yaml文件错误信息{str(e)}"}]
+            logger.error(f"文件{yaml_file},读取yaml文件错误信息{str(e)}")
         finally:
             return data
 
