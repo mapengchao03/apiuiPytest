@@ -16,5 +16,3 @@ if __name__ == '__main__':
     shutil.copy(config.allure_environment_path, config.allure_results) # 将环境配置信息文件copy到allure-results
     shutil.copy(config.allure_categories_path, config.allure_results)  # 将执自定义分类文件copy到allure-results
     os.system(r"allure generate ./allure-results -o ./allure-report --clean") # report会清除历史数据
-
-
