@@ -1,0 +1,38 @@
+[
+  {
+    "pageNum": 1,
+    "pageSize": 5,
+    "publishCode":"",
+    "surveyName":"",
+    "surveyType": [0, 2],
+    "orderByColumn": "createTime",
+    "isAsc": "desc",
+    "regionCode":"",
+    "expected_type": "status_code1",
+    "expected_value": 200
+  },
+  {
+    "pageNum": 2,
+    "pageSize": 5,
+    "publishCode":"",
+    "surveyName":"",
+    "surveyType": [0, 2],
+    "orderByColumn": "createTime",
+    "isAsc": "desc",
+    "regionCode":"",
+    "expected_type": "status_code2",
+    "expected_value": 202
+  },
+  {
+    "pageNum": 3,
+    "pageSize": 5,
+    "publishCode":"",
+    "surveyName":"",
+    "surveyType": [0, 2],
+    "orderByColumn": "createTime",
+    "isAsc": "desc",
+    "regionCode":"",
+    "expected_type": "status_code3",
+    "expected_value": 203
+  }
+]

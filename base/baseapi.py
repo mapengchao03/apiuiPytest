@@ -9,6 +9,10 @@ class BaseApi:
             timeout: int = 10,
             default_headers: Optional[Dict] = None
     ):
+        if default_headers is None:
+            default_headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+        "Content-Type": "application/json;charset=UTF-8"}
         self.base_url = base_url.rstrip('/')
         self.timeout = timeout
         self.session = requests.Session()
@@ -49,7 +53,7 @@ class BaseApi:
             )
         except requests.RequestException as e:
             logger.error("Request failed: %s", str(e))
-            raise RuntimeError(f"API request error: {str(e)}") from e
+            raise e
 
         # 日志记录响应信息
         logger.info(f"接口Response响应结果: [{resp.status_code}] {resp.reason}")
@@ -67,6 +71,10 @@ class BaseApi:
     def delete(self, endpoint: str, **kwargs):
         return self._request('DELETE', endpoint, **kwargs)
 
+    def add_auth_header(self, token: str):
+        """添加鉴权头 (示例)"""
+        self.session.headers.update({'Authorization': f'Bearer {token}'})
+
     def assert_status_code(
             self,
             response: requests.Response,
@@ -74,10 +82,6 @@ class BaseApi:
     ):
         """验证状态码"""
         assert response.status_code == expected_code
-
-    def add_auth_header(self, token: str):
-        """添加鉴权头 (示例)"""
-        self.session.headers.update({'Authorization': f'Bearer {token}'})
 
 if __name__ == '__main__':
     # 以下是测试代码
@@ -90,12 +94,8 @@ if __name__ == '__main__':
         "pageNum": 1,"pageSize": 20,"publishCode":'',"surveyName":'',"surveyType": [0, 2],
         "orderByColumn": "createTime","isAsc": "desc","regionCode":''
     }
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
-        "Content-Type": "application/json;charset=UTF-8", "Authorization":"123456"
-    }
     base_api = BaseApi(url)
-    login_res = base_api.post("/system/auth/authorize/hunan", json=json, headers=headers, verify=False)
+    login_res = base_api.post("/system/auth/authorize/hunan", json=json, verify=False)
     auth = login_res.json()['data']['accessToken']
     base_api.add_auth_header(auth)
     login_res1 = base_api.get("/survey/survey/getSurveyList", data=data, verify=False)
