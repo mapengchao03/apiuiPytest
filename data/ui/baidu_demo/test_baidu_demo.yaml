@@ -1,6 +1,6 @@
 # 注释：登录模块测试数据
 - name: "登录成功-管理员账号"  # 字符串（含空格需加引号）
-  username: admin
+  username: "admin"
   password: "123456"  # 引号可加可不加
   params:
     timeout: 10  # 自动识别为整数

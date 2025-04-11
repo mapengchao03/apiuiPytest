@@ -17,13 +17,12 @@ class TestJenkinsLogin:
             pytest.fail(f"数据加载失败: {data['error']}")
         """登录本地jenkins成功"""
         jenkins_login = JenkinsLogin(driver)
-        base_url = config.local_jenkins_host
         username = data["username"]
         password = data["password"]
         expected_type = data["expected_type"]
         expected_value = data["expected_value"]
         with allure.step("步骤1:打开本地jenkins网址"):
-            jenkins_login.get_url(base_url)
+            jenkins_login.get_url(config.local_jenkins_host)
         with allure.step("步骤2:输入用户名"):
             jenkins_login.input_username(username)
         with allure.step("步骤3:输入密码"):

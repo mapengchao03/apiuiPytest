@@ -126,7 +126,7 @@ class TestOne:
 
     @allure.story("测试参数化")
     @allure.title('测试读取csv并输出为字典列表格式数据')
-    @pytest.mark.parametrize('data', read_data.read_csv("data/ui/baidu_demo/test.csv"))
+    @pytest.mark.parametrize('data', read_data.read_csv("data/ui/baidu_demo/test_baidu_demo.csv"))
     def test_param01(self, data):
         if 'error' in data:
             pytest.fail(f"数据加载失败: {data['error']}")
@@ -142,7 +142,7 @@ class TestOne:
 
     @allure.story("测试参数化")
     @allure.title('测试读取yaml并输出列表格式数据')
-    @pytest.mark.parametrize('data', read_data.read_yaml("data/ui/baidu_demo/test.yaml"))
+    @pytest.mark.parametrize('data', read_data.read_yaml("data/ui/baidu_demo/test_baidu_demo.yaml"))
     def test_param02(self, data):
         if 'error' in data:
             pytest.fail(f"数据加载失败: {data['error']}")
@@ -158,7 +158,7 @@ class TestOne:
 
     @allure.story("测试参数化")
     @allure.title('测试读取json并输出数据')
-    @pytest.mark.parametrize('data', read_data.read_json("data/ui/baidu_demo/test.json"))
+    @pytest.mark.parametrize('data', read_data.read_json("data/ui/baidu_demo/test_baidu_demo.json"))
     def test_param03(self, data):
         if 'error' in data:
             pytest.fail(f"数据加载失败: {data['error']}")

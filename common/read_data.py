@@ -72,15 +72,15 @@ read_data = ReadData()
 
 if __name__ == '__main__':
     # 演示 示例baidu_demo
-    print(read_data.read_csv("data/ui/baidu_demo/test.csv"))
-    for i in read_data.read_csv("data/ui/baidu_demo/test.csv"):
+    print(read_data.read_csv("data/ui/baidu_demo/test_baidu_demo.csv"))
+    for i in read_data.read_csv("data/ui/baidu_demo/test_baidu_demo.csv"):
         print(i)
-    print(read_data.read_yaml("data/ui/baidu_demo/test.yaml"))
-    for k in read_data.read_yaml("data/ui/baidu_demo/test.yaml"):
+    print(read_data.read_yaml("data/ui/baidu_demo/test_baidu_demo.yaml"))
+    for k in read_data.read_yaml("data/ui/baidu_demo/test_baidu_demo.yaml"):
         print(k)
-    print(read_data.read_json("data/ui/baidu_demo/test.json"))
-    print(type(read_data.read_json("data/ui/baidu_demo/test.json")))
-    for i in read_data.read_json("data/ui/baidu_demo/test.json"):
+    print(read_data.read_json("data/ui/baidu_demo/test_baidu_demo.json"))
+    print(type(read_data.read_json("data/ui/baidu_demo/test_baidu_demo.json")))
+    for i in read_data.read_json("data/ui/baidu_demo/test_baidu_demo.json"):
         print(i)
 
 

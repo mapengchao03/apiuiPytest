@@ -1,0 +1,16 @@
+# 开发环境配置文件
+environment: dev
+
+api:
+  base_url: https://203.83.237.82:30763/hnweb/api/proxy/
+  auth_url: /system/auth/authorize/hunan
+  auth_json:
+    tokenCode: c6zY8PJCO4+lD3RMWcuZS2lE/cT8JmrbZbbeEDxTSNZGEEZl5bEViYXXcaqAmsRDeEih6njMJfZFTgmsJbQ6N7FaCZgejZtxyxVjEEaev//xgh4ylRHERSC8Mkk545j2J+8zH0Q1TyTfd+OdpDKxTcJ2lxJrB1sGpQKEQivRp/4nAZcnsnYDkXl36H1+0D09GOgKR3nm3Ji8IH5GRhAIq9I3XZKNy9gpzVFmSA0skiLRCWAQYP8zuq+lN3ZEW9miW72REk31nZjVqUjnspwzcBnonFQ1ySJlNsfilRDDJs8mIcRXcU1SPJAXkKyjv4hy9MrHkm96mwn0uJOBIlpOCY3giQ1satS0CEItN31G9ysn3uBfkX2jawqAfmKwb2tkp+PqaphU99c5ppHhmLdaDtfHFV4ube5CMNDUfH2mXt+yHPU3TWqa8HAv+ZIhNRbomihvjtmsMa3j0FwbIAS2pCE/bToZXpq3QfOT/Jh6jaW65OztEc+X5xY7Kp5hPeRm
+  survey_url: /survey/getSurveyList
+
+database:
+  host: db-dev.example.com
+  port: 3306
+  name: app_dev
+  user: dev_user
+  password: db-dev.password

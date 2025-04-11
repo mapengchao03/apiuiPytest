@@ -8,11 +8,11 @@ log_path = os.path.join(root_path, 'logs')
 if not os.path.exists(log_path):
     os.mkdir(log_path)
 # allure报告中展示环境配置信息的文件路径
-allure_environment_path = os.path.join(root_path, 'config', 'environment.properties')
+allure_environment_path = os.path.join(root_path, 'allure_config', 'environment.properties')
 # allure报告中展示执行器信息的文件路径
-allure_executor_path = os.path.join(root_path, 'config', 'executor.json')
+allure_executor_path = os.path.join(root_path, 'allure_config', 'executor.json')
 # allure报告中展示自定义分类信息的文件路径
-allure_categories_path = os.path.join(root_path, 'config', 'categories.json')
+allure_categories_path = os.path.join(root_path, 'allure_config', 'categories.json')
 # allure生成报告文件路径
 allure_report = os.path.join(root_path, 'allure-report')
 # allure生成结果文件路径
