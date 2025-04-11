@@ -81,7 +81,11 @@ class BaseApi:
             expected_code: int
     ):
         """验证状态码"""
-        assert response.status_code == expected_code
+        try:
+            assert response.status_code == expected_code
+        except Exception as e:
+            logger.error(f"断言status_code失败，错误信息{str(e)}" )
+            raise e
 
 if __name__ == '__main__':
     # 以下是测试代码

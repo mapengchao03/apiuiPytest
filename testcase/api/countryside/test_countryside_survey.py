@@ -19,8 +19,8 @@ class TestCountrysideSurvey:
         with allure.step("步骤1:查询"):
             res = api_client.get("/survey/survey/getSurveyList", data=data, verify=False)
         with allure.step("步骤5:校验结果"):
-            result = res.status_code
             try:
+                result = res.status_code
                 if expected_type == "status_code1":
                     assert result == expected_value
                 elif expected_type == "status_code2":
