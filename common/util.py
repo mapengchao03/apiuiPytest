@@ -1,6 +1,5 @@
 import os, platform
 
-
 class Util(object):
 
     # 判断当前环境为windows或者linux

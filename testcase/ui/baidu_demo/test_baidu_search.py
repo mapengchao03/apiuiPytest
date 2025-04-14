@@ -1,11 +1,8 @@
 # -*- coding:utf-8 -*-
-import pytest
-import allure
+import allure, pytest
 from common.logger import logger
-from config import config
 from common.read_data import read_data
 from page_object.baidu_demo.object_baidu_search import BaiduSearch
-
 
 @allure.feature("测试TestOne类的功能")
 class TestOne:
@@ -175,11 +172,11 @@ class TestOne:
     @allure.story("搜索selenium结果用例")
     @allure.title("测试搜索selenium结果用例标题")
     @pytest.mark.parametrize('data', read_data.read_json("data/ui/baidu_demo/test_baidu_search.json"))
-    def test_001(self, driver, data):
+    def test_001(self, driver,global_data, data):
         if 'error' in data:
             pytest.fail(f"数据加载失败: {data['error']}")
         baidu_search = BaiduSearch(driver)
-        base_url = config.baidu_demo_host
+        base_url = global_data['ui']['baidu_url']
         search_input = data["search_input"]
         expected_type = data["expected_type"]
         expected_value = data["expected_value"]

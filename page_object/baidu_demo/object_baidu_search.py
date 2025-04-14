@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
-from base.basepage import WebPage
 from common.times import sleep
-
+from base.basepage import WebPage
 
 class BaiduSearch(WebPage):
 

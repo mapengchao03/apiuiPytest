@@ -1,5 +1,4 @@
-import logging
-import os
+import os, logging
 from config import config
 from datetime import datetime
 from logging.handlers import RotatingFileHandler
