@@ -3,7 +3,7 @@
   "type": "jenkins",
   "url": "http://localhost:8081/",
   "buildOrder": 27,
-  "buildName": "self-api-autotest #42",
+  "buildName": "self-api-autotest #27",
   "buildUrl": "http://localhost:8081/job/self-api-autotest/27/",
   "reportUrl": "http://localhost:8081/job/self-api-autotest/27/allure/",
   "reportName": "Allure Report Demo"
