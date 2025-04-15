@@ -1,10 +1,10 @@
 {
   "name": "Jenkins",
   "type": "jenkins",
-  "url": "http://jenkins.example.com/job/allure-demo/",
-  "buildOrder": 42,
-  "buildName": "allure-demo #42",
-  "buildUrl": "http://jenkins.example.com/job/allure-demo/42/",
-  "reportUrl": "http://allure-report.example.com/",
+  "url": "http://localhost:8081/",
+  "buildOrder": 27,
+  "buildName": "self-api-autotest #42",
+  "buildUrl": "http://localhost:8081/job/self-api-autotest/27/",
+  "reportUrl": "http://localhost:8081/job/self-api-autotest/27/allure/",
   "reportName": "Allure Report Demo"
 }

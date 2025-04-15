@@ -22,6 +22,7 @@
 
     allure-report             ——allure报告目录
     allure-result             ——allure结果目录
+    allure_config             ——allure配置目录
     base                      ——基础类
         basepage              ——基础页面对象类
         baserequest           ——基础API对象类
@@ -47,7 +48,7 @@
             case2
             ...
     .gitignore                ——git忽略文件
-    conftest.py               ——pytest胶水文件
+    conftest.py               ——fixture配置文件
     pytest.ini                ——pytest配置文件
     README.md                 ——项目说明文件
     requirements.txt          ——项目依赖文件
