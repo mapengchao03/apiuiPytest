@@ -85,7 +85,7 @@ class BaseApi:
     @staticmethod
     def assert_equal(actual_result, expected_value):
         try:
-            assert actual_result == expected_value,f"assert {actual_result} == {expected_value}"
+            assert actual_result == expected_value,f"实际结果{actual_result}不等于预期结果{expected_value}"
             logger.info(f"实际结果{actual_result}等于预期结果{expected_value}")
         except Exception as e:
             logger.error(f"断言失败，错误信息{str(e)}" )
@@ -95,7 +95,7 @@ class BaseApi:
     @staticmethod
     def assert_not_equal(actual_result, expected_value):
         try:
-            assert actual_result != expected_value,f"assert {actual_result} != {expected_value}"
+            assert actual_result != expected_value,f"实际结果{actual_result}等于预期结果{expected_value}"
             logger.info(f"实际结果{actual_result}不等于预期结果{expected_value}")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -105,7 +105,7 @@ class BaseApi:
     @staticmethod
     def assert_greater(actual_result, expected_value):
         try:
-            assert actual_result > expected_value,f"assert {actual_result} > {expected_value}"
+            assert actual_result > expected_value,f"实际结果{actual_result}小于或等于预期结果{expected_value}"
             logger.info(f"实际结果{actual_result}大于预期结果{expected_value}")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -115,7 +115,7 @@ class BaseApi:
     @staticmethod
     def assert_less(actual_result, expected_value):
         try:
-            assert actual_result < expected_value,f"assert {actual_result} < {expected_value}"
+            assert actual_result < expected_value,f"实际结果{actual_result}大于或等于预期结果{expected_value}"
             logger.info(f"实际结果{actual_result}小于预期结果{expected_value}")
         except Exception as e:
                 logger.error(f"断言失败,错误信息{str(e)}" )
@@ -125,7 +125,7 @@ class BaseApi:
     @staticmethod
     def assert_true(actual_result):
         try:
-            assert actual_result is True,f"assert {actual_result} is True"
+            assert actual_result is True,f"实际结果{actual_result}为False"
             logger.info(f"实际结果{actual_result}为True")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -135,7 +135,7 @@ class BaseApi:
     @staticmethod
     def assert_false(actual_result):
         try:
-            assert actual_result is False,f"assert {actual_result} is False"
+            assert actual_result is False,f"实际结果{actual_result}为True"
             logger.info(f"实际结果{actual_result}为False")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -145,7 +145,7 @@ class BaseApi:
     @staticmethod
     def assert_in(actual_result, expected_value):
         try:
-            assert expected_value in actual_result,f"assert  {expected_value} in {actual_result}"
+            assert expected_value in actual_result,f"预期结果{expected_value}不在实际结果{actual_result}中"
             logger.info(f"预期结果{expected_value}在实际结果{actual_result}中")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -155,7 +155,7 @@ class BaseApi:
     @staticmethod
     def assert_not_in(actual_result, expected_value):
         try:
-            assert expected_value not in actual_result,f"assert {expected_value} not in {actual_result}"
+            assert expected_value not in actual_result,f"预期结果{expected_value}在实际结果{actual_result}中"
             logger.info(f"预期结果{expected_value}不在实际结果{actual_result}中")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -165,7 +165,7 @@ class BaseApi:
     @staticmethod
     def assert_is_none(actual_result):
         try:
-            assert actual_result is None,f"assert {actual_result} is None"
+            assert actual_result is None,f"实际结果{actual_result}不为None"
             logger.info(f"实际结果{actual_result}为None")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -175,7 +175,7 @@ class BaseApi:
     @staticmethod
     def assert_is_not_none(actual_result):
         try:
-            assert actual_result is not None,f"assert {actual_result} os not None"
+            assert actual_result is not None,f"实际结果{actual_result}为None"
             logger.info(f"实际结果{actual_result}不为None")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -185,7 +185,7 @@ class BaseApi:
     @staticmethod
     def assert_empty_string(actual_result):
         try:
-            assert actual_result == '',f"assert {actual_result} == ''"
+            assert actual_result == '',f"实际结果{actual_result}不为空字符串"
             logger.info(f"实际结果{actual_result}为空字符串")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -195,7 +195,7 @@ class BaseApi:
     @staticmethod
     def assert_length_equal(actual_result, expected_value):
         try:
-            assert len(actual_result) == expected_value,f"assert {len(actual_result)} == {expected_value}"
+            assert len(actual_result) == expected_value,f"实际结果{actual_result}的长度不等于预期结果{expected_value}"
             logger.info(f"实际结果{actual_result}的长度等于预期结果{expected_value}")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -205,7 +205,7 @@ class BaseApi:
     @staticmethod
     def assert_length_not_equal(actual_result, expected_value):
         try:
-            assert len(actual_result) != expected_value,f"assert {len(actual_result)} != {expected_value}"
+            assert len(actual_result) != expected_value,f"实际结果{actual_result}的长度等于预期结果{expected_value}"
             logger.info(f"实际结果{actual_result}的长度不等于预期结果{expected_value}")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -215,7 +215,7 @@ class BaseApi:
     @staticmethod
     def assert_length_greater(actual_result, expected_value):
         try:
-            assert len(actual_result) > expected_value,f"assert {len(actual_result)} > {expected_value}"
+            assert len(actual_result) > expected_value,f"实际结果{actual_result}的长度小于或等于预期结果{expected_value}"
             logger.info(f"实际结果{actual_result}的长度大于预期结果{expected_value}")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -225,7 +225,7 @@ class BaseApi:
     @staticmethod
     def assert_length_less(actual_result, expected_value):
         try:
-            assert len(actual_result) < expected_value,f"assert {len(actual_result)} < {expected_value}"
+            assert len(actual_result) < expected_value,f"实际结果{actual_result}的长度大于或等于预期结果{expected_value}"
             logger.info(f"实际结果{actual_result}的长度小于预期结果{expected_value}")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -235,7 +235,7 @@ class BaseApi:
     @staticmethod
     def assert_type_equal(actual_result, expected_value):
         try:
-            assert type(actual_result) == expected_value,f"assert {type(actual_result)} == {expected_value}"
+            assert type(actual_result) == expected_value,f"实际结果{actual_result}的类型不等于预期结果{expected_value}"
             logger.info(f"实际结果{actual_result}的类型等于预期结果{expected_value}")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -245,7 +245,7 @@ class BaseApi:
     @staticmethod
     def assert_type_not_equal(actual_result, expected_value):
         try:
-            assert type(actual_result) != expected_value,f"assert {type(actual_result)} != {expected_value}"
+            assert type(actual_result) != expected_value,f"实际结果{actual_result}的类型等于预期结果{expected_value}"
             logger.info(f"实际结果{actual_result}的类型不等于预期结果{expected_value}")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -255,7 +255,7 @@ class BaseApi:
     @staticmethod
     def assert_key_in(actual_result, expected_value):
         try:
-            assert expected_value in actual_result.keys(),f"assert {expected_value} in {actual_result.keys()}"
+            assert expected_value in actual_result.keys(),f"预期结果{expected_value}不在实际结果{actual_result}的键中"
             logger.info(f"预期结果{expected_value}在实际结果{actual_result}的键中")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -265,7 +265,7 @@ class BaseApi:
     @staticmethod
     def assert_key_not_in(actual_result, expected_value):
         try:
-            assert expected_value not in actual_result.keys(),f"assert {expected_value} not in {actual_result.keys()}"
+            assert expected_value not in actual_result.keys(),f"预期结果{expected_value}在实际结果{actual_result}的键中"
             logger.info(f"预期结果{expected_value}不在实际结果{actual_result}的键中")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -275,7 +275,7 @@ class BaseApi:
     @staticmethod
     def assert_value_in(actual_result, expected_value):
         try:
-            assert expected_value in actual_result.values(),f"assert {expected_value} in {actual_result.values()}"
+            assert expected_value in actual_result.values(),f"预期结果{expected_value}不在实际结果{actual_result}的值中"
             logger.info(f"预期结果{expected_value}在实际结果{actual_result}的值中")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -285,7 +285,7 @@ class BaseApi:
     @staticmethod
     def assert_value_not_in(actual_result, expected_value):
         try:
-            assert expected_value not in actual_result.values(),f"assert {expected_value} not in {actual_result.values()}"
+            assert expected_value not in actual_result.values(),f"预期结果{expected_value}在实际结果{actual_result}的值中"
             logger.info(f"预期结果{expected_value}不在实际结果{actual_result}的值中")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
@@ -295,7 +295,7 @@ class BaseApi:
     @staticmethod
     def assert_set_equal(actual_result, expected_value):
         try:
-            assert set(actual_result) == set(expected_value),f"assert {set(actual_result)} == {set(expected_value)}"
+            assert set(actual_result) == set(expected_value),f"预期结果{expected_value}在实际结果{actual_result}的值中"
             logger.info(f"实际结果{actual_result}的集合等于预期结果{expected_value}")
         except Exception as e:
             logger.error(f"断言失败,错误信息{str(e)}" )
