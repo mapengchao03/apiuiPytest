@@ -1,15 +1,15 @@
 - username: 'chenbaozi-jenkins'
   password: chenbaozi2305
-  expected_type: jenkins
+  expected_type: assert_equal
   expected_value: '工作台 [Jenkins]'
 
 - username: ""
   password: chenbaozi2305
-  expected_type: test
+  expected_type: assert_equal
   expected_value: '登录 [Jenkins]'
 
 - username: 'chenbaozi-jenkins'
   password: ""
-  expected_type: title
+  expected_type: assert_equal
   expected_value: '登录 [Jenkins]'
 

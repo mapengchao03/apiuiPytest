@@ -28,21 +28,9 @@ class TestJenkinsLogin:
         with allure.step("步骤4:点击登录"):
             jenkins_login.click_login()
         with allure.step("步骤5:校验结果"):
-            result = jenkins_login.get_title()
-            try:
-                if expected_type == "jenkins":
-                    assert expected_value == result
-                elif expected_type == "test":
-                    assert expected_value == result
-                else:
-                    assert expected_value == result
-            except Exception as e:
-                # 第一logger.error是为了记录日志，
-                # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
-                logger.error(f"校验失败，错误信息:{repr(e)}")
-                raise e
-            else:
-                logger.info("校验成功")
+            actual_result = jenkins_login.get_title()
+            if expected_type == "assert_equal":
+                jenkins_login.assert_equal(actual_result, expected_value)
 
     @allure.story("登录-读取yaml文件")
     @allure.title("jenkins登录用例")
@@ -65,18 +53,6 @@ class TestJenkinsLogin:
         with allure.step("步骤4:点击登录"):
             jenkins_login.click_login()
         with allure.step("步骤5:校验结果"):
-            result = jenkins_login.get_title()
-            try:
-                if expected_type == "jenkins":
-                    assert expected_value == result
-                elif expected_type == "test":
-                    assert expected_value == result
-                else:
-                    assert expected_value == result
-            except Exception as e:
-                # 第一logger.error是为了记录日志，
-                # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
-                logger.error(f"校验失败，错误信息:{repr(e)}")
-                raise e
-            else:
-                logger.info("校验成功")
+            actual_result = jenkins_login.get_title()
+            if expected_type == "assert_equal":
+                jenkins_login.assert_equal(actual_result, expected_value)

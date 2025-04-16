@@ -8,7 +8,7 @@
     "orderByColumn": "createTime",
     "isAsc": "desc",
     "regionCode":"",
-    "expected_type": "status_code1",
+    "expected_type": "assert_equal",
     "expected_value": 200
   },
   {
@@ -20,7 +20,7 @@
     "orderByColumn": "createTime",
     "isAsc": "desc",
     "regionCode":"",
-    "expected_type": "status_code2",
+    "expected_type": "assert_equal",
     "expected_value": 202
   },
   {
@@ -32,7 +32,7 @@
     "orderByColumn": "createTime",
     "isAsc": "desc",
     "regionCode":"",
-    "expected_type": "status_code3",
+    "expected_type": "assert_equal",
     "expected_value": 203
   }
 ]

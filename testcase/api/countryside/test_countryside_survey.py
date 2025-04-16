@@ -17,21 +17,9 @@ class TestCountrysideSurvey:
         with allure.step("步骤1:查询"):
             res = api_client.get(global_data['api']['survey_url'], data=data, verify=False)
         with allure.step("步骤5:校验结果"):
-            try:
-                result = res.status_code
-                if expected_type == "status_code1":
-                    assert result == expected_value
-                elif expected_type == "status_code2":
-                    assert result == expected_value
-                else:
-                    assert result == expected_value
-            except Exception as e:
-                # 第一logger.error是为了记录日志，
-                # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
-                logger.error(f"校验失败，错误信息:{str(e)}")
-                raise e
-            else:
-                logger.info("校验成功")
+            actual_result = res.status_code
+            if expected_type == "assert_equal":
+                api_client.assert_equal(actual_result, expected_value)
 
     @allure.story("全部问卷-读取yaml文件")
     @allure.title("全部问卷查询")
@@ -44,18 +32,6 @@ class TestCountrysideSurvey:
         with allure.step("步骤1:查询"):
             res = api_client.get(global_data['api']['survey_url'], data=data, verify=False)
         with allure.step("步骤5:校验结果"):
-            try:
-                result = res.status_code
-                if expected_type == "status_code1":
-                    assert result == expected_value
-                elif expected_type == "status_code2":
-                    assert result == expected_value
-                else:
-                    assert result == expected_value
-            except Exception as e:
-                # 第一logger.error是为了记录日志，
-                # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
-                logger.error(f"校验失败，错误信息:{str(e)}")
-                raise e
-            else:
-                logger.info("校验成功")
+            actual_result = res.status_code
+            if expected_type == "assert_equal":
+                api_client.assert_equal(actual_result, expected_value)

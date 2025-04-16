@@ -42,7 +42,7 @@ class TestOne:
         except Exception as e:
             # 第一logger.error是为了记录日志，
             # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
-            logger.error(f"校验失败，错误信息:{repr(e)}")
+            logger.error(f"校验失败，错误信息:{str(e)}")
             raise e
         else:
             logger.info("校验成功")
@@ -187,22 +187,10 @@ class TestOne:
         with allure.step("步骤3:点击搜索按钮"):
             baidu_search.click_search()
         with allure.step("步骤4:获取标题"):
-            result = baidu_search.get_title()
+            actual_result = baidu_search.get_title()
         with allure.step("步骤5:校验结果"):
-            try:
-                if expected_type == "selenium":
-                    assert expected_value == result
-                elif expected_type == "test":
-                    assert expected_value == result
-                else:
-                    assert expected_value == result
-            except Exception as e:
-                # 第一logger.error是为了记录日志，
-                # 第二rasie e抛异常是为了让 pytest知道这条用例执行错误了
-                logger.error(f"校验失败，错误信息:{repr(e)}")
-                raise e
-            else:
-                logger.info("校验成功")
+            if expected_type == "assert_equal":
+                baidu_search.assert_equal(actual_result, expected_value)
 
 if __name__ == '__main__':
     pass
