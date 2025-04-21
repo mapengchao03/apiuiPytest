@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 import allure, pytest
-from common.logger import logger
 from common.read_data import read_data
 from page_object.local_jenkins.object_jenkins_login import JenkinsLogin
 

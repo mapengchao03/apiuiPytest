@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 import allure, pytest
-from common.logger import logger
 from common.read_data import read_data
 
 @allure.feature("countryside问卷功能")
